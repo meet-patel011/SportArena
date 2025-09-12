@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# Database
+db.sqlite3
+
+# Django static files (from collectstatic)
+/staticfiles/
+
+# IDE folders
+.vscode/
+.idea/
