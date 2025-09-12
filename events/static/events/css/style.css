@@ -1,0 +1,1212 @@
+/* ----------------------------------------------
+   Global Styles
+------------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.background {
+  background-image: url("../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 6%;
+  position: relative;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 3rem;
+  border-left: 6px solid #ef233c;
+  border-radius: 10px;
+  max-width: 380px;
+  animation: fadeInLeft 1s ease forwards;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Login Page */
+.login-page {
+  background-color: #f0f4f8;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.login-form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.login-form {
+  background-color: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+.login-form h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #EF233C;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-login {
+  padding: 0.75rem 1.5rem;
+  background-color: #EF233C;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 120px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #c4002e;
+}
+
+.btn-register {
+  padding: 0rem 0rem;
+  color: rgb(65, 163, 228);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Register Page Specific Styles */
+.register-page {
+  background-color: #f0f4f8;
+  font-family: 'Poppins', sans-serif;
+}
+
+.register-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.register-form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.register-form {
+  background-color: #ffffff;
+  padding: 2.5rem 3rem;
+  padding-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+.register-form h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #EF233C;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.register-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-register-submit {
+  padding: 0.75rem 1.5rem;
+  background-color: #35bf35;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login-link {
+  padding: 0.5rem 1rem;
+  color: rgb(65, 163, 228);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* Contact Page Specific Styles */
+.contact-page {
+  background-color: #f0f4f8;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+}
+
+.contact-form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.contact-form {
+  background-color: #ffffff;
+  padding: 3rem 3.5rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.contact-form h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #EF233C;
+}
+
+.contact-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.btn-contact-submit {
+  padding: 0.75rem 1.5rem;
+  background-color: #EF233C;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-contact-submit:hover {
+  background-color: #c4002e;
+}
+
+/* Featured Event Section on Homepage*/
+.featured-events-section {
+  background-color: #f0f4f8;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 3px solid #ef233c;
+  border-bottom: 2px solid #ef233c;
+}
+
+.featured-events-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #00203F;
+}
+
+.featured-events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.featured-event-card {
+  background-color: #ffffff;
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.featured-event-card:hover {
+  transform: translateY(-5px);
+}
+
+.featured-event-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.featured-event-details {
+  padding: 1rem;
+}
+
+.featured-event-details h3 {
+  font-size: 1.2rem;
+  color: #ef233c;
+  margin-bottom: 0.5rem;
+}
+
+.featured-event-details p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* About us */
+.about-us-section {
+  background-color: #2a8ce740;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 3px solid #ef233c;
+  border-bottom: 2px solid #ef233c;
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 3rem auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-section h2 {
+  font-size: 2rem;
+  color: #00203F;
+  margin-bottom: 1.5rem;
+}
+
+.about-us-section p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+
+/* ----------------------------------------------
+   Header & Navigation
+------------------------------------------------ */
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.737);
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #ef233c;
+  padding: 1rem 2rem;
+  z-index: 999;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.branding {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background-color: #ef233c;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.authentication .loginbtn,
+.authentication .registerbtn {
+  background-color: #ef233c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.authentication .loginbtn:hover,
+.authentication .registerbtn:hover,
+.admin-btn:hover {
+  background-color: #c4002e;
+}
+
+
+/* ----------------------------------------------
+   Buttons
+------------------------------------------------ */
+.btn,
+.joinusbtn {
+  background-color: #ef233c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+  border-radius: 30px;
+  margin-right: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(230, 227, 227, 0.2),
+    0 0 30px rgba(239, 35, 60, 0.4);
+}
+
+.btn:hover,
+.joinusbtn:hover {
+  background-color: #ffffff;
+  color: #239aef;
+  transform: scale(1.1);
+}
+
+.btn1 {
+  background: transparent;
+  color: #23a1ef;
+  font-weight: bold;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+}
+
+
+/* Join Event Button */
+.btn-join-event {
+  background-color: #ef233c;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto 0.5rem auto;
+  box-shadow: 0 0 10px rgba(239, 35, 60, 0.4);
+  transition: all 1.3s ease;
+}
+
+/* Join Event Page Styles */
+.join-event-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.join-event-title {
+  font-size: 1.8rem;
+  color: #EF233C;
+  margin-bottom: 1.5rem;
+}
+
+.join-event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.join-event-form input,
+.join-event-form textarea {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 100%;
+  background: #f8f9fa;
+  transition: border-color 0.3s ease;
+}
+
+.join-event-form input:focus,
+.join-event-form textarea:focus {
+  border-color: #EF233C;
+}
+
+.join-event-submit-btn {
+  background-color: #EF233C;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.join-event-submit-btn:hover {
+  background-color: #c4002e;
+}
+
+/* Login to Join Button Style */
+.btn-login {
+  padding: 0.6rem 1rem;
+  background-color: #EF233C;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  width: 120px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-login:hover {
+  background-color: #c4002e;
+}
+
+/* My Events Main Section */
+.my-events-section {
+  background: #f0f4f8;
+  /* Light gray-blue background for a clean look */
+  padding: 3rem 2rem;
+  border-top: 3px solid #ef233c;
+  border-bottom: 2px solid #ef233c;
+  text-align: center;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.my-events-title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #00203F;
+}
+
+.my-events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.my-event-card {
+  background-color: white;
+  width: 300px;
+  padding: 1.8rem 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  border-left: 4px solid #ef233c;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.my-event-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #2b2d42;
+}
+
+.my-event-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.my-btn-create {
+  background-color: #ef233c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(239, 35, 60, 0.4);
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.my-btn-create:hover {
+  background-color: #c4002e;
+}
+
+@media (max-width: 768px) {
+  .my-events-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .my-event-card {
+    width: 90%;
+  }
+}
+
+
+/* ----------------------------------------------
+   Footer
+------------------------------------------------ */
+.footer {
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c, #2b2b2b);
+  color: #f1f1f1;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 1rem;
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.3);
+  border-top: 2px solid #ef233c;
+}
+
+/* ----------------------------------------------
+   Forms Styling
+------------------------------------------------ */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.form-page header {
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c, #2b2b2b);
+  padding: 1rem 2rem;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.form-page .branding,
+.form-page .nav-links a {
+  color: #fff;
+}
+
+
+.form-page .nav-links a:hover::after {
+  background-color: #ef233c;
+}
+
+form {
+  max-width: 400px;
+  margin: 3rem auto;
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+form h1 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: #2b2d42;
+  font-size: 1.6rem;
+}
+
+.label1 {
+  display: block;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #2b2d42;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f8f9fa;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #ef233c;
+  outline: none;
+}
+
+form .btn {
+  width: 30%;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  border-radius: 25px;
+}
+
+form textarea {
+  min-height: 80px;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+/* Events Section */
+/* Container for Search and Add Event button */
+.search-add-container {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-bar input {
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  flex: 1;
+  min-width: 150px;
+}
+
+.search-bar .btn {
+  padding: 0.4rem 1rem;
+  background-color: #EF233C;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-search {
+  background-color: red;
+  height: 31px;
+  width: 80px;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar .btn:hover .btn-search:hover {
+  background-color: #c4002e;
+}
+
+.btn-add-event {
+  padding: 0.4rem 1.2rem;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-event:hover {
+  background-color: #0056b3;
+}
+
+.intro-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.events-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  color: #00203F;
+}
+
+.events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.event-card {
+  background-color: #ffffff;
+  width: 320px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.event-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.event-details {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.event-details h3 {
+  color: #EF233C;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.event-details p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.event-actions {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.btn-join-event,
+.btn-login {
+  padding: 0.6rem 1rem;
+  background-color: #1ac211;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 120px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-join-event:hover,
+.btn-login:hover {
+  background-color: #0069c4;
+}
+
+.btn-disabled {
+  padding: 0.6rem 1rem;
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+  cursor: not-allowed;
+  width: 120px;
+  text-align: center;
+}
+
+body {
+  background-color: #f0f4f8;
+}
+
+
+/* My Events Section */
+.my-events-section {
+  background: #f0f4f8;
+  padding: 3rem 2rem;
+  border-top: 3px solid #ef233c;
+  border-bottom: 2px solid #ef233c;
+  text-align: center;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.my-events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.my-event-card {
+  background-color: #ffffff;
+  width: 320px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.my-event-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.my-event-details {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.my-event-details h3 {
+  color: #EF233C;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.my-event-details p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.my-event-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.btn-edit-event,
+.btn-delete {
+  padding: 0.5rem 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-delete {
+  text-decoration: none;
+  box-shadow: none;
+  outline: none;
+  background-color: #7f7b7b;
+}
+
+
+/* Edit Event Page Styles */
+.edit-event-container {
+  background: #ffffff;
+  padding: 3rem 2rem;
+  max-width: 600px;
+  margin: 4rem auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.edit-event-container h1 {
+  font-size: 2.2rem;
+  color: #EF233C;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.edit-event-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-event-form label {
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.edit-event-form input,
+.edit-event-form select,
+.edit-event-form textarea {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.edit-event-form input:focus,
+.edit-event-form select:focus,
+.edit-event-form textarea:focus {
+  border-color: #EF233C;
+  outline: none;
+}
+
+.btn-edit-event {
+  background-color: #EF233C;
+  color: white;
+  padding: 0.4rem 1.4rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-update-event:hover {
+  background-color: #c4002e;
+}
+
+/* Delete Confirmation Page Styles */
+.add-event-form {
+  background: #ffffff;
+  padding: 3rem 2rem;
+  max-width: 600px;
+  margin: 4rem auto;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.add-event-form h1 {
+  font-size: 2.2rem;
+  color: #EF233C;
+  margin-bottom: 1.5rem;
+}
+
+.add-event-form p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.add-event-form form {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-confirm-delete {
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #EF233C;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-confirm-delete:hover {
+  background-color: #c4002e;
+}
+
+.btn-cancel {
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+
+/* ----------------------------------------------
+   Custom Alert Box
+------------------------------------------------ */
+.custom-alert {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ef233c;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  font-weight: bold;
+}
+
+.custom-alert button {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+/* Organizer Dashboard */
+.dashboard-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2.4rem;
+  color: #00203F;
+  margin-bottom: 2rem;
+}
+
+.dashboard-event-card {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-event-card h2 {
+  color: #EF233C;
+  margin-bottom: 1rem;
+}
+
+.dashboard-event-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dashboard-event-card table,
+.dashboard-event-card th,
+.dashboard-event-card td {
+  border: 1px solid #ddd;
+}
+
+.dashboard-event-card th,
+.dashboard-event-card td {
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.dashboard-event-card th {
+  background-color: #ef233c;
+  color: white;
+}

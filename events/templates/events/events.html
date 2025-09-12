@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events - Sports Buddy</title>
+  <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+
+  <script>
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const message = urlParams.get("message");
+      if (message) {
+        document.getElementById('alert-message').innerText = message;
+        document.getElementById('custom-alert').style.display = 'block';
+      }
+    };
+
+    function closeAlert() {
+      document.getElementById('custom-alert').style.display = 'none';
+    }
+  </script>
+</head>
+
+<body class="form-page">
+  <div id="custom-alert" class="custom-alert">
+    <span id="alert-message"></span>
+    <button onclick="closeAlert()">X</button>
+  </div>
+
+  <header>
+    <nav class="navbar">
+      <div class="branding">Sports Buddy</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+      </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="search-add-container">
+    <form method="GET" action="{% url 'events' %}" class="search-bar">
+      <input type="text" name="q" placeholder="Search events by name or cities..." />
+      <button type="submit" class="btn-search">Search</button>
+      {% if user.is_authenticated %}
+      <a href="{% url 'add_events' %}" class="btn-add-event">+ Add Event</a>
+      {% else %}
+        <a href="{% url 'user_login' %}" class="btn-add-event">+ Add Event</a>
+      {% endif %}
+    </form>
+  </div>
+
+  <p class="intro-text">
+    Explore upcoming sports events happening near you! Whether you're looking to join a game or organize your own. Connect, participate, and play.
+  </p>
+
+  <!-- Page Title -->
+  <h1 class="events-title">Upcoming Sports Events</h1>
+
+  <main class="events-grid">
+    {% for event in events %}
+    <div class="event-card">
+      <div class="event-image">
+        {% if event.sport_type == 'Football' %}
+          <img src="{% static 'events/images/football.jpg' %}" alt="Football Event">
+        {% elif event.sport_type == 'Cricket' %}
+          <img src="{% static 'events/images/cricket.jpg' %}" alt="Cricket Event">
+        {% elif event.sport_type == 'Basketball' %}
+          <img src="{% static 'events/images/basketball.jpg' %}" alt="Basketball Event">
+        {% elif event.sport_type == 'Badminton' %}
+          <img src="{% static 'events/images/badminton.jpg' %}" alt="Badminton Event">
+          {% elif event.sport_type == 'Tennis' %}
+          <img src="{% static 'events/images/tennis.jpg' %}" alt="Tennis Event">
+          {% elif event.sport_type == 'Volleyball' %}
+          <img src="{% static 'events/images/volleyball.jpg' %}" alt="Volleyball Event">
+          {% elif event.sport_type == 'Table Tennis' %}
+          <img src="{% static 'events/images/tabletennis.jpg' %}" alt="Table Tennis Event">
+          {% elif event.sport_type == 'Running' %}
+          <img src="{% static 'events/images/running.jpg' %}" alt="Running Event">
+        {% else %}
+          <img src="{% static 'events/images/bg2.jpg' %}" alt="Event Image">
+        {% endif %}
+      </div>
+      <div class="event-details">
+        <h3>{{ event.event_name }}</h3>
+        <p><strong>Sport:</strong> {{ event.sport_type }}</p>
+        <p><strong>Date:</strong> {{ event.event_date }} | <strong>Time:</strong> {{ event.event_time }}</p>
+        <p><strong>Location:</strong> {{ event.event_location }}</p>
+        <p><strong>Players:</strong> {{ event.participants.count }} / {{ event.total_players }}</p>
+      </div>
+
+      <div class="event-actions">
+          {% if user.is_authenticated %}
+              {% if event.participants.count < event.total_players %}
+                  <a href="{% url 'join_event' event.id %}" class="btn-join-event">Join Event</a>
+              {% else %}
+                  <button class="btn-disabled" disabled>Event Full</button>
+              {% endif %}
+          {% else %}
+              <a href="{% url 'user_login' %}" class="btn-login">Login Req.</a>
+          {% endif %}
+      </div>
+
+    </div>
+    {% empty %}
+    {% if user.is_authenticated %}
+      <p>No events available. <a href="{% url 'add_events' %}" class="btn">Add an Event</a></p>
+    {% else %}
+      <p>No events available. <a href="{% url 'user_login' %}" class="btn1">Login to Add Events</a></p>
+    {% endif %}  
+    {% endfor %}
+  </main><br></br>
+</body>
+</html>

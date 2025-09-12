@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Sports Buddy</title>
+  <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+</head>
+
+<body class="contact-page">
+  <div class="contact-wrapper">
+    <header>
+      <nav class="navbar">
+        <div class="branding">Sports Buddy</div>
+        <ul class="nav-links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="contact-form-section">
+      <form method="POST" class="contact-form">
+        {% csrf_token %}
+        <h1>Contact Us</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit" class="btn-contact-submit">Send Message</button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Sports Buddy. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

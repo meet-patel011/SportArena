@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Event - Sports Buddy</title>
+    <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="form-page">
+    <header>
+      <nav class="navbar">
+        <div class="branding">Sports Buddy</div>
+        <ul class="nav-links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="add-event-form">
+      <div class="form-container">
+        <form action="{% url 'add_events' %}" method="POST">
+          {% csrf_token %}
+          <h1>Add Your Event</h1>
+
+          <label class="label1">Sport Type</label>
+          <select name="sport_type" required>
+            <option value="" disabled selected>Select a sport</option>
+            <option value="Football">Football</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Badminton">Badminton</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Volleyball">Volleyball</option>
+            <option value="Table Tennis">Table Tennis</option>
+            <option value="Running">Running</option>
+          </select>
+
+          <input
+            type="text"
+            name="event_name"
+            placeholder="Enter event title"
+            required
+          />
+
+          <label class="label1">Date</label>
+          <input type="date" name="event_date" required />
+
+          <label class="label1">Time</label>
+          <input type="time" name="event_time" required />
+
+          <label class="label1">Location</label>
+          <input type="text" name="event_location" required />
+
+          <label class="label1">Total Players Needed</label>
+          <input
+            type="number"
+            name="total_players"
+            min="1"
+            placeholder="e.g., 10"
+            required
+          />
+
+          <label class="label1">Description</label>
+          <textarea
+            name="event_description"
+            rows="4"
+            placeholder="Describe the event..."
+          ></textarea>
+
+          <button type="submit" class="btn1" style="background-color: red; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">Submit Event</button>
+
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Sports Buddy. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

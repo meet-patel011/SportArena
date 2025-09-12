@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Event - Sports Buddy</title>
+    <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+</head>
+    <header>
+      <nav class="navbar">
+        <div class="branding">Sports Buddy</div>
+        <ul class="nav-links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'events' %}">Events</a></li>
+        </ul>
+      </nav>
+    </header>
+<body class="form-page">
+    <div class="join-event-container">
+        <h1 class="join-event-title">Join Event: {{ event.event_name }}</h1>
+
+        <form method="POST" class="join-event-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="join-event-submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

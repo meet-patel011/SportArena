@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Events - Sports Buddy</title>
+    <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+</head>
+
+<body class="form-page">
+    <header>
+        <nav class="navbar">
+            <div class="branding">Sports Buddy</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'events' %}">All Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="my-events-section">
+        <h1 class="my-events-title">My Created Events</h1>
+
+        {% if events %}
+        <div class="my-events-grid">
+            {% for event in events %}
+            <div class="my-event-card">
+                <div class="event-image">
+                    {% if event.sport_type == 'Football' %}
+                      <img src="{% static 'events/images/football.jpg' %}" alt="Football Event">
+                    {% elif event.sport_type == 'Cricket' %}
+                      <img src="{% static 'events/images/cricket.jpg' %}" alt="Cricket Event">
+                    {% elif event.sport_type == 'Basketball' %}
+                      <img src="{% static 'events/images/basketball.jpg' %}" alt="Basketball Event">
+                    {% elif event.sport_type == 'Badminton' %}
+                      <img src="{% static 'events/images/badminton.jpg' %}" alt="Badminton Event">
+                    {% elif event.sport_type == 'Tennis' %}
+                      <img src="{% static 'events/images/tennis.jpg' %}" alt="Tennis Event">
+                    {% elif event.sport_type == 'Volleyball' %}
+                      <img src="{% static 'events/images/volleyball.jpg' %}" alt="Volleyball Event">
+                    {% elif event.sport_type == 'Table Tennis' %}
+                      <img src="{% static 'events/images/tabletennis.jpg' %}" alt="Table Tennis Event">
+                    {% elif event.sport_type == 'Running' %}
+                      <img src="{% static 'events/images/running.jpg' %}" alt="Running Event">
+                    {% else %}
+                      <img src="{% static 'events/images/bg2.jpg' %}" alt="Event Image">
+                    {% endif %}
+                </div>
+
+                <div class="event-details">
+                    <h3>{{ event.event_name }}</h3>
+                    <p><strong>Sport:</strong> {{ event.sport_type }}</p>
+                    <p><strong>Date:</strong> {{ event.event_date }}</p>
+                    <p><strong>Time:</strong> {{ event.event_time }}</p>
+                    <p><strong>Location:</strong> {{ event.event_location }}</p>
+                    <p><strong>Players Needed:</strong> {{ event.total_players }}</p>
+                    <p><strong>Joined Players:</strong> {{ event.participants.count }}</p>
+                    <p>{{ event.event_description }}</p>
+                </div>
+                <div class="event-actions">
+                    <a href="{% url 'edit_event' event.id %}" class="btn-edit-event">Edit</a>
+                    <a href="{% url 'delete_event' event.id %}" class="btn-delete">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>You haven't created any events yet.</p>
+        <a href="{% url 'add_events' %}" class="btn-create">Create One Now</a>
+        {% endif %}
+    </main>
+</body>
+</html>

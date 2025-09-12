@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Sports Buddy</title>
+  <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+  <script>
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const message = urlParams.get("message");
+      if (message) {
+        alert(message);
+      }
+    };
+  </script>
+</head>
+
+<body class="register-page">
+  <div class="register-wrapper">
+    <header>
+      <nav class="navbar">
+        <div class="branding">Sports Buddy</div>
+        <ul class="nav-links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="register-form-section">
+      <form method="POST" class="register-form">
+        {% csrf_token %}
+        <h1>Create Account</h1>
+        {{ form.non_field_errors }} 
+        {{ form.as_p }}
+
+        <div class="register-actions">
+          <button type="submit" class="btn-register-submit">Register</button><br><br>
+          <h4>Already have an account?</h4>
+          <a href="{% url 'user_login' %}" class="btn-login-link">Login</a>
+        </div>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Sports Buddy. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

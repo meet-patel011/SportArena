@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - Sports Buddy</title>
+  <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="branding">Sports Buddy</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'my_events' %}">My Events</a></li>
+        {% else %}  
+          <li><a href="{% url 'user_login' %}">My Events</a></li>
+        {% endif %}  
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'events' %}">All Events</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'organizer_dashboard' %}">Dashboard</a></li>
+        {% endif %}
+      </ul>
+      <a href="{% url 'user_login' %}" class="btn">Login</a>
+    </nav>
+  </header>
+
+  <section class="background">
+    <div class="hero-overlay">
+      <h1>Empowering Local Sports Communities</h1><br>
+      <p>Find and organize local sports events effortlessly. Connect with fellow sports enthusiasts, participate in local games.</p>
+      <p>Join the community today!</p>
+      <a href="{% url 'register' %}" class="btn">Register</a>
+    </div>
+  </section>
+  <section class="featured-events-section">
+      <h2>Featured Events</h2>
+      <div class="featured-events-grid">
+          {% for event in featured_events %}
+          <div class="featured-event-card">
+              <div class="featured-event-image">
+                  {% if event.sport_type == 'Football' %}
+                      <img src="{% static 'events/images/football.jpg' %}" alt="Football">
+                  {% elif event.sport_type == 'Cricket' %}
+                      <img src="{% static 'events/images/cricket.jpg' %}" alt="Cricket">
+                  {% elif event.sport_type == 'Basketball' %}
+                      <img src="{% static 'events/images/basketball.jpg' %}" alt="Basketball">
+                  {% elif event.sport_type == 'Badminton' %}
+                      <img src="{% static 'events/images/badminton.jpg' %}" alt="Badminton">
+                  {% elif event.sport_type == 'Tennis' %}
+                      <img src="{% static 'events/images/tennis.jpg' %}" alt="Tennis">
+                  {% elif event.sport_type == 'Volleyball' %}
+                      <img src="{% static 'events/images/volleyball.jpg' %}" alt="Volleyball">
+                  {% elif event.sport_type == 'Table Tennis' %}
+                      <img src="{% static 'events/images/tabletennis.jpg' %}" alt="Table Tennis">
+                  {% elif event.sport_type == 'Running' %}
+                      <img src="{% static 'events/images/running.jpg' %}" alt="Running">
+                  {% else %}
+                      <img src="{% static 'events/images/bg2.jpg' %}" alt="Event">
+                  {% endif %}
+              </div>
+
+              <div class="featured-event-details">
+                  <h3>{{ event.event_name }}</h3>
+                  <p><strong>Sport:</strong> {{ event.sport_type }}</p>
+                  <p><strong>Date:</strong> {{ event.event_date }}</p>
+                  <p><strong>Location:</strong> {{ event.event_location }}</p>
+              </div>
+          </div>
+          {% empty %}
+          <p>No featured events available right now.</p>
+          {% endfor %}
+      </div>
+  </section>
+  <section class="about-us-section">
+      <h2>About Sports Buddy</h2>
+      <p>
+          Sports Buddy is a dynamic platform dedicated to connecting sports enthusiasts with local sports events and players. 
+          Whether you're a casual player wanting to join a nearby football match or an organizer hosting a badminton tournament, 
+          we simplify event creation and participation. Empowering local communities to stay active, connect, and play.
+      </p>
+      <p>
+          Join the movement to make sports accessible and fun for everyone. Discover events, create your own, and build your sports network today.
+      </p>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Sports Buddy. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

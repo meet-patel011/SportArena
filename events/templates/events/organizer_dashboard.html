@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organizer Dashboard - Sports Buddy</title>
+    <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+</head>
+
+<body class="form-page">
+    <header>
+        <nav class="navbar">
+            <div class="branding">Sports Buddy</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'my_events' %}">My Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-section">
+        <h1 class="dashboard-title">Organizer Dashboard</h1>
+        <h4 align="center">Shows Players who joined your Event</h4><br>
+
+        {% for item in events_with_participants %}
+            <div class="dashboard-event-card">
+                <h2>{{ item.event.event_name }} ({{ item.event.event_date }})</h2>
+                {% if item.join_infos %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile Number</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for join_info in item.join_infos %}
+                                <tr>
+                                    <td>{{ join_info.full_name }}</td>
+                                    <td>{{ join_info.mobile_number }}</td>
+                                    <td>{{ join_info.email }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No participants have joined yet.</p>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>You haven't created any events yet.</p>
+        {% endfor %}
+    </main>
+</body>
+
+</html>

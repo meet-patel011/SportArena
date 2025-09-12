@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Event</title>
+    <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+</head>
+
+<body class="form-page">
+    <header>
+        <nav class="navbar">
+            <div class="branding">Sports Buddy</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'my_events' %}">My Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="add-event-form">
+        <h1>Confirm Deletion</h1>
+        <p>Are you sure you want to delete the event: <strong>{{ event.event_name }}</strong>?</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn-confirm-delete">Yes, Delete</button>
+            <a href="{% url 'my_events' %}" class="btn-cancel">Cancel</a>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Sports Buddy. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
