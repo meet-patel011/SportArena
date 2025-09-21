@@ -8,8 +8,6 @@ Tech Stack
 
  • Frontend: HTML, CSS, JavaScript
 
- • Database: SQLite (development), PostgreSQL (future deployment)
+ • Database: SQLite
  
  • Authentication: Django’s built-in authentication system
- 
- • Deployment: Ready for production setup
