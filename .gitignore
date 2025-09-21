@@ -3,16 +3,22 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.sqlite3
 
 # Environment variables
+venv/
 .env
+*.env
 
 # Database
 db.sqlite3
 
 # Django static files (from collectstatic)
 /staticfiles/
+media/
 
 # IDE folders
 .vscode/
 .idea/
+*.swp
+.DS_Store

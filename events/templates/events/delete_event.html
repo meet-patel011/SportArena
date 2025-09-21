@@ -12,10 +12,9 @@
 <body class="form-page">
     <header>
         <nav class="navbar">
-            <div class="branding">Sports Buddy</div>
+            <div class="branding">SportArena</div>
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'my_events' %}">My Events</a></li>
             </ul>
         </nav>
     </header>
@@ -27,12 +26,12 @@
         <form method="POST">
             {% csrf_token %}
             <button type="submit" class="btn-confirm-delete">Yes, Delete</button>
-            <a href="{% url 'my_events' %}" class="btn-cancel">Cancel</a>
+            <a href="{% url 'dashboard' %}" class="btn-cancel">Cancel</a>
         </form>
     </main>
 
     <footer class="footer">
-        <p>© 2025 Sports Buddy. All rights reserved.</p>
+        <p>© 2025 SportArena. All rights reserved.</p>
     </footer>
 </body>
 

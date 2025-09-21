@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - Sports Buddy</title>
+  <title>Home - SportArena</title>
   <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
@@ -13,27 +13,25 @@
 <body>
   <header>
     <nav class="navbar">
-      <div class="branding">Sports Buddy</div>
+      <div class="branding">SportArena</div>
       <ul class="nav-links">
-        <li><a href="{% url 'home' %}">Home</a></li>
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'my_events' %}">My Events</a></li>
-        {% else %}  
-          <li><a href="{% url 'user_login' %}">My Events</a></li>
-        {% endif %}  
+        <li><a href="{% url 'home' %}">Home</a></li> 
+        <li><a href="{% url 'events' %}">Explore Events</a></li>
         <li><a href="{% url 'contact' %}">Contact</a></li>
-        <li><a href="{% url 'events' %}">All Events</a></li>
         {% if user.is_authenticated %}
-          <li><a href="{% url 'organizer_dashboard' %}">Dashboard</a></li>
-        {% endif %}
+            <li><a href="{% url 'dashboard' %}">My Events</a></li>
+        {% endif %}    
       </ul>
-      <a href="{% url 'user_login' %}" class="btn">Login</a>
+      
+      {% if user.is_authenticated %}
+          <li><a href="{% url 'dashboard' %}"><img src="{% static 'events/images/user.png' %}" alt="Dashboard" class="dashboard-icon"></a></li>
+      {% endif %}
     </nav>
   </header>
 
   <section class="background">
     <div class="hero-overlay">
-      <h1>Empowering Local Sports Communities</h1><br>
+      <h1 class="hero-title">Empowering Local Sports Communities</h1><br>
       <p>Find and organize local sports events effortlessly. Connect with fellow sports enthusiasts, participate in local games.</p>
       <p>Join the community today!</p>
       <a href="{% url 'register' %}" class="btn">Register</a>
@@ -79,9 +77,9 @@
       </div>
   </section>
   <section class="about-us-section">
-      <h2>About Sports Buddy</h2>
+      <h2>About SportArena</h2>
       <p>
-          Sports Buddy is a dynamic platform dedicated to connecting sports enthusiasts with local sports events and players. 
+          SportArena is a dynamic platform dedicated to connecting sports enthusiasts with local sports events and players. 
           Whether you're a casual player wanting to join a nearby football match or an organizer hosting a badminton tournament, 
           we simplify event creation and participation. Empowering local communities to stay active, connect, and play.
       </p>
@@ -91,8 +89,7 @@
   </section>
 
   <footer class="footer">
-    <p>© 2025 Sports Buddy. All rights reserved.</p>
+    <p>© 2025 SportArena. All rights reserved.</p>
   </footer>
 </body>
-
 </html>

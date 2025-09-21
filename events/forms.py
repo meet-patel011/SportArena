@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Event, EventJoinInfo
+from .models import Event, ContactMessage
 
 SPORT_CHOICES = [
     ('Football', 'Football'),
@@ -31,10 +31,8 @@ class EventForm(forms.ModelForm):
         widgets = {
             'event_date': forms.DateInput(attrs={'type': 'date'}),
             'event_time': forms.TimeInput(attrs={'type': 'time'}),
-            'event_description': forms.Textarea(attrs={'rows': 4}),
         }
 
-    # We exclude 'organizer' from the form fields since it will be assigned automatically in views
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -52,7 +50,6 @@ class RegisterForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
-        # Remove default help texts
         for field_name in ['username', 'email', 'password1', 'password2']:
             self.fields[field_name].help_text = ''
 
@@ -61,7 +58,7 @@ class RegisterForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError("An account with this email already exists.")
         return email
-
+    
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'label1',
@@ -74,12 +71,17 @@ class LoginForm(AuthenticationForm):
         'required': 'required'
     }))
 
-class EventJoinForm(forms.ModelForm):
+class EventJoinForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True, label='Full Name')
+    email = forms.EmailField(required=True, label='Email')
+    phone_number = forms.CharField(max_length=15, required=True, label='Phone Number')
+
+    def __init__(self, *args, **kwargs):
+        super(EventJoinForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs['readonly'] = True
+
+
+class ContactForm(forms.ModelForm):
     class Meta:
-        model = EventJoinInfo
-        fields = ['full_name', 'mobile_number', 'email']
-        widgets = {
-            'full_name': forms.TextInput(attrs={'placeholder': 'Your full name'}),
-            'mobile_number': forms.TextInput(attrs={'placeholder': 'Your mobile number'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'Your email'}),
-        }
+        model = ContactMessage
+        fields = ['name', 'email', 'message']

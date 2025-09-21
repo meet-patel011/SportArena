@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - SportArena</title>
+    <link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+</head>
+
+<body class="dashboard-page">
+    <header>
+        <nav class="navbar">
+            <div class="branding">SportArena</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'events' %}">Events</a></li>
+            </ul>
+        </nav>
+    </header><br>
+
+    <main class="dashboard-container">
+        <h1 class="dashboard-title">Welcome, {{ profile.user.username }}!</h1>
+        <section class="profile-info">
+            <h2>User Profile</h2>
+            <div class="profile-item">
+                <span class="profile-label">👤 Username:</span>
+                <span class="profile-value">{{ profile.user.username }}</span>
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">📩 Email:</span>
+                <span class="profile-value">{{ profile.user.email }}</span>
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">🏀 Sports Interested:</span>
+                <span class="profile-value">{{ profile.sports_interested }}</span>
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">📍City:</span>
+                <span class="profile-value">{{ profile.city }}</span>
+            </div><br>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>{{ created_events|length }}</h3>
+                    <p>Created Events</p>
+                </div>
+                <div class="stat-card">
+                    <h3>{{ joined_events|length }}</h3>
+                    <p>Joined Events</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <section class="created-events-section">
+            <h2>Your Created Events</h2><br>
+            {% if created_events %}
+            <div class="events-grid">
+                {% for event in created_events %}
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="{% static event.image_path %}" alt="{{ event.sport_type }}">
+                    </div>
+                    <div class="event-info">
+                        <h3>{{ event.event_name }}</h3>
+                        <p><strong>Sport:</strong> {{ event.sport_type }}</p>
+                        <p><strong>Date:</strong> {{ event.event_date }}</p>
+                        <p><strong>Time:</strong> {{ event.event_time }}</p>
+                        <p><strong>Location:</strong> {{ event.event_location }}</p>
+                        <p><strong>Players Needed:</strong> {{ event.total_players }}</p>
+                        <p><strong>Players Joined:</strong> {{ event.participants.count }}</p>
+                        <p>{{ event.event_description }}</p>
+                    </div>
+
+                    <div class="participants-container">
+                        <button class="toggle-btn" onclick="toggleParticipants({{ event.id }})">
+                            View Participants
+                        </button>
+                        <div id="participants-{{ event.id }}" class="participants-panel">
+                            {% if event.participant_details %}
+                            <table class="participants-table">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Full Name</th>
+                                        <th>Phone</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for p in event.participant_details %}
+                                    <tr>
+                                        <td>{{ p.username }}</td>
+                                        <td>{{ p.email }}</td>
+                                        <td>{{ p.name }}</td>
+                                        <td>{{ p.phone }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <p>No participants yet.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="event-actions">
+                        <a href="{% url 'edit_event' event.id %}" class="btn-edit">Edit</a>
+                        <a href="{% url 'delete_event' event.id %}" class="btn-delete"
+                        onclick="return confirm('Are you sure to delete this event?');">Delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty-state">You have not created any events yet. 
+                <a href="{% url 'add_events' %}" class="btn-register-submit">Add Event</a>
+            </p>
+            {% endif %}
+        </section>
+
+
+        <section class="joined-events-section">
+            <h2>Events You Joined</h2><br>
+            {% if joined_events %}
+            <div class="events-grid">
+            {% for joined in joined_events %}
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{% static joined.image_path %}" alt="{{ joined.event.sport_type }}">
+                </div>
+                <div class="event-info">
+                <h3>{{ joined.event.event_name }}</h3>
+                <p><strong>Sport:</strong> {{ joined.event.sport_type }}</p>
+                <p><strong>Date:</strong> {{ joined.event.event_date }}</p>
+                </div>
+                <div class="event-actions">
+                    <a href="{% url 'cancel_joined_event' joined.event.id %}" class="btn-cancel-join" onclick="return confirm('Are you sure you want to exit this event?');">Leave Event</a>
+                    
+                </div>    
+            </div>
+            {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty-state">You have not joined any events yet. <a href="{% url 'events' %}" class="btn-register-submit">View Events</a></p>
+            {% endif %}
+        </section>
+
+        <script>
+            function toggleParticipants(eventId) {
+                const panel = document.getElementById("participants-" + eventId);
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            }
+            </script>
+
+    <footer class="footer">
+        <p>© 2025 SportArena. All rights reserved.</p>
+    </footer>
+</body>
+</html>
